@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hu" ng-app="pekseg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{{title}}</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fullcalendar.css">
+    <link rel="stylesheet" href="css/pekseg.css">
+  
+    <!-- Frameworks javascript files -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+
+    <!-- Components javascript files -->
+    <script src="js/canvasjs.min.js"></script>
+    <script src="js/fullcalendar.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    .................................................
+    .................................................
+   
+    <script src="js/pekseg.js"></script>
+    <script src="js/dbFactory.js"></script>
+
+    <!-- AngularJS controller files -->
+    <script src="js/controllers/cartCtrl.js"></script>
+    <script src="js/controllers/loginCtrl.js"></script>
+    <script src="js/controllers/orderCtrl.js"></script>
+    <script src="js/controllers/productCtrl.js"></script>
+    <script src="js/controllers/statCtrl.js"></script>
+    <script src="js/controllers/userCtrl.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Menü</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- menü items -->
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#!/">Terméklista</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#!/kosar">Kosár <span class="badge rounded-pill bg-danger">{{kosarDB}}</span></a>
+                    </li>
+                    <li class="nav-item" ng-if="!loggedIn">
+                        <a class="nav-link" aria-current="page" href="#!/reg">Regisztráció</a>
+                    </li>
+                    <!-- user functions -->
+                    <li class="nav-item" ng-if="loggedIn">
+                        <a class="nav-link" aria-current="page" href="#!/rendelesek">Rendeléseim</a>
+                    </li>
+                    <!-- admin functions -->
+                    <li class="nav-item" ng-if="loggedIn user==1">
+                        <a class="nav-link" aria-current="page" href="#!/termekek">Termékek</a>
+                    </li>
+                    <li class="nav-item" ng-if="loggedIn user==1">
+                        <a class="nav-link" aria-current="page" href="#!/felhasznalok">Felhasználók</a>
+                    </li>
+                    <li class="nav-item" ng-if="loggedIn user==1">
+                        <a class="nav-link" aria-current="page" href="#!/rendelesek">Rendelések</a>
+                    </li>
+                    <li class="nav-item" ng-if="loggedIn user==1">
+                        <a class="nav-link" aria-current="page" href="#!/stat">Statisztika</a>
+                    </li>
+
+                </ul>
+                <div class="d-flex" ng-controller="loginCtrl" ng-if="!loggedIn">
+                    <input class="form-control me-2" type="text" ng-model="email" placeholder="E-mail cím...">
+                    <input class="form-control me-2" type="password" ng-model="passwd" placeholder="Jelszó...">
+                    <button class="btn btn-primary" type="button" ng-click="login()">Belépés</button>
+                </div>
+                <div class="d-flex" ng-controller="loginCtrl" ng-if="loggedIn">
+                    <input class="form-control me-2" type="text" ng-model="loggedUser.nev" disabled>
+                    <button class="btn btn-primary" type="button" ng-click="logout()">Kilépés</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container-fluid">
+        <div class="container">
+            <h1>{{title}}</h1>
+            <h3>{{subtitle}}</h3>
+        </div>
+    </header>
+
+    <main class="container" ng-view>
+
+    </main>
+
+    <footer class="container-fluid">
+        <div class="container">
+            {{company}} {{author}}
+        </div>
+    </footer>
+</body>
+
+</html>

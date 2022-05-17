@@ -1,0 +1,33 @@
+{
+  "name": "vizsga_pekseg",
+  "version": "1.0.0",
+  "description": "Szoftverfejlesztő és tesztelő backend programozás vizsga 2022",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazaradrian01/vizsgaprojekt.git"
+  },
+  "author": "Lázár Adrián",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lazaradrian01/vizsgaprojekt/issues"
+  },
+  "homepage": "https://github.com/lazaradrian01/vizsgaprojekt#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
