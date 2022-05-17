@@ -17,7 +17,7 @@ var pool = mysql.createPool({
 });
 
 // User login checking
-app./*......*/('/login', (req, res) => {
+app.get/('/login', (req, res) => {
     let data = {
         email: req.body.email,
         pass: req.body.passwd,
@@ -30,7 +30,7 @@ app./*......*/('/login', (req, res) => {
 });
 
 // SELECT ALL RECORDS FROM :table
-app./*......*/('/:table', (req, res) => {
+app.get('/:table', (req, res) => {
     //...................................
     //...................................
     //...................................
@@ -50,7 +50,7 @@ app.get/('/:table/:field/:id', (req, res) => {
 });
 
 // INSERT RECORD TO :table
-app./*......*/('/:table', (req, res) => {
+app.post('/:table', (req, res) => {
     let table = req.params.table;
     let data = req.body;
 
@@ -73,7 +73,7 @@ app./*......*/('/:table', (req, res) => {
 });
 
 // UPDATE RECORD IN :table
-app./*......*/('/:table/:id', (req, res) => {
+app.post('/:table/:id', (req, res) => {
     let table = req.params.table;
     let id = req.params.id;
     let data = req.body;
@@ -95,7 +95,7 @@ app./*......*/('/:table/:id', (req, res) => {
 });
 
 // DELETE ONE RECORD FROM :table
-app./*......*/('/:table/:id', (req, res) => {
+app.post('/:table/:id', (req, res) => {
     let table = req.params.table;
     let id = req.params.id;
     pool.query(`DELETE FROM ${table} WHERE ID=${id}`, (err, results) => {
@@ -105,7 +105,7 @@ app./*......*/('/:table/:id', (req, res) => {
 });
 
 // DELETE ALL RECORD FROM :table
-app./*......*/('/:table', (req, res) => {
+app.post('/:table', (req, res) => {
     let table = req.params.table;
     pool.query(`DELETE FROM ${table}`, (err, results) => {
         if (err) throw err;
@@ -114,6 +114,6 @@ app./*......*/('/:table', (req, res) => {
 });
 
 // 5. feladat
-app.listen(app.get('port'), '3000', function() {
-    console.log('Server listening on port %d in %s mode', app.get('port'), app.get('env'));
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}...`);
   });

@@ -22,12 +22,28 @@ app.run(function($rootScope, $locale) {
 
 app.config(function($routeProvider) {
     $routeProvider
-        ....................................
-        ....................................
-        ....................................
-        ....................................
-        ....................................
-        ....................................
-        ....................................
-        ....................................
+    .when("/", {
+        templateUrl: "views/termeklista.html",
+        controller: "productCtrl"
+    })
+    .when("/reg", {
+        templateUrl: "views/regisztracio.html",
+        controller: "loginCtrl"
+    })
+    .when("/kosar", {
+        templateUrl: "views/kosar.html",
+        controller: "cartCtrl"
+    })
+    .when("/felhasznalok", {
+        templateUrl: "views/felhasznalok.html",
+        controller: "userCtrl"
+    })
+    .when("/rendelesek", {
+        templateUrl: "views/rendelesek.html",
+        controller: "orderCtrl"
+    })
+    .when("/stat", {
+        templateUrl: "views/statisztika.html",
+        controller: "statCtrl"
+    })
 });
